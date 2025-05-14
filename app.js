@@ -1,8 +1,21 @@
-// Personal Finance Tracker - Version 1.0
-// A simple implementation with basic functionality
+// Personal Finance Tracker - Version 2.0
+// Added localStorage persistence to save transactions between sessions
 
 // Initialize data structure to store transactions
 let transactions = [];
+
+// Function to save transactions to localStorage
+function saveTransactions() {
+    localStorage.setItem('financeTrackerTransactions', JSON.stringify(transactions));
+}
+
+// Function to load transactions from localStorage
+function loadTransactions() {
+    const savedTransactions = localStorage.getItem('financeTrackerTransactions');
+    if (savedTransactions) {
+        transactions = JSON.parse(savedTransactions);
+    }
+}
 
 // Get DOM elements
 const transactionForm = document.getElementById('transaction-form');
@@ -28,6 +41,7 @@ transactionForm.addEventListener('submit', function(e) {
     
     // Create transaction object
     const transaction = {
+        id: Date.now(), // Add unique ID for future editing/deletion
         date: date,
         description: description,
         amount: amount,
@@ -37,6 +51,9 @@ transactionForm.addEventListener('submit', function(e) {
     
     // Add to transactions array
     transactions.push(transaction);
+    
+    // Save to localStorage
+    saveTransactions();
     
     // Update the UI
     updateTransactionTable();
@@ -165,6 +182,16 @@ function updateChart() {
     }
 }
 
-// Initialize the app with empty data
-updateSummary();
-updateChart(); 
+// Initialize the app
+document.addEventListener('DOMContentLoaded', function() {
+    // Load saved transactions from localStorage
+    loadTransactions();
+    
+    // Set today's date as default in the date input
+    document.getElementById('date').valueAsDate = new Date();
+    
+    // Update UI with loaded data
+    updateTransactionTable();
+    updateSummary();
+    updateChart();
+}); 

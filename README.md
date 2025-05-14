@@ -1,14 +1,15 @@
-# Personal Finance Tracker - Version 1.0
+# Personal Finance Tracker
 
-This is a simple web application to track personal finances, categorize expenses, and visualize spending patterns.
+A simple web application to track personal finances, categorize expenses, and visualize spending patterns.
 
-## Features (Version 1.0)
+## Features
 
 - Manual entry of income and expense transactions
 - Categorization of transactions
 - Transaction history table
+- Data persistence using localStorage
 - Basic financial summary (income, expenses, balance)
-- Simple pie chart for expense categories
+- Pie chart for expense categories
 - Responsive design
 
 ## Technologies Used
@@ -17,47 +18,34 @@ This is a simple web application to track personal finances, categorize expenses
 - CSS
 - JavaScript
 - Chart.js for data visualization
+- LocalStorage API for data persistence
 
 ## How to Use
 
 1. Open `index.html` in a web browser
 2. Add transactions using the form:
-   - Enter the date
+   - Enter the date (defaults to today)
    - Enter a description
    - Enter the amount
    - Select whether it's income or expense
    - Choose a category
 3. View your financial summary and spending chart
 4. Review your transaction history
+5. Your data will be saved automatically and persist between sessions
 
-## Learning Notes (Version 1.0)
+## Implementation Notes
 
-This is a basic implementation focusing on core functionality:
-
-- Simple use of vanilla JavaScript for DOM manipulation
-- Basic data structures to store transactions (array of objects)
-- Fundamental Chart.js implementation
-- All data is stored in memory (no persistence)
+- Uses vanilla JavaScript for DOM manipulation
+- Transactions stored as objects in an array
+- Chart.js provides visualization of spending by category
+- LocalStorage saves data between browser sessions
+- Mobile-responsive design with simple CSS
 
 ## Future Improvements
 
-- Add data persistence using localStorage
-- Add data import/export functionality
+- Add CSV import/export functionality
+- Add transaction editing and deletion
 - Implement filtering and sorting options
 - Add monthly budget tracking
 - Improve chart visualizations
-- Add data insights/analysis
-
-## Sample Commit Message
-
-```
-Initial commit: Basic Personal Finance Tracker v1.0
-
-Created a simple finance tracker with:
-- Transaction entry form
-- Transaction history table
-- Summary statistics
-- Basic pie chart for spending categories
-
-Learning vanilla JavaScript DOM manipulation and basic Chart.js implementation.
-``` 
+- Add data insights/analysis 
