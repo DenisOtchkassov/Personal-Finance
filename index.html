@@ -1,17 +1,28 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Personal Finance Tracker - v2.0</title>
     <link rel="stylesheet" href="styles.css">
-    <!-- Including Chart.js for basic visualization -->
+    <!-- Including Chart.js for visualizations -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
     <div class="container">
-        <h1>My Personal Finance Tracker</h1>
-        <h2>Version 2.0</h2>
+        <div class="header-container">
+            <div class="title-container">
+                <h1>My Personal Finance Tracker</h1>
+                <h2>Version 2.0</h2>
+            </div>
+            <div class="theme-toggle-container">
+                <label class="switch">
+                    <input type="checkbox" id="theme-toggle">
+                    <span class="slider round"></span>
+                </label>
+                <span id="theme-label">Dark Mode</span>
+            </div>
+        </div>
         
         <div class="form-container">
             <h3>Add New Transaction</h3>
@@ -53,14 +64,24 @@
 
         <div class="summary-container">
             <h3>Summary</h3>
-            <div class="chart-container">
-                <h4>Spending by Category</h4>
-                <canvas id="category-chart"></canvas>
-            </div>
             <div class="totals">
                 <p>Total Income: <span id="total-income">$0.00</span></p>
                 <p>Total Expenses: <span id="total-expenses">$0.00</span></p>
                 <p>Balance: <span id="balance">$0.00</span></p>
+            </div>
+        </div>
+        
+        <div class="charts-container">
+            <h3>Visualizations</h3>
+            <div class="chart-controls">
+                <select id="chart-type-selector">
+                    <option value="pie">Spending by Category (Pie)</option>
+                    <option value="bar">Spending by Category (Bar)</option>
+                    <option value="line">Spending Trends Over Time</option>
+                </select>
+            </div>
+            <div class="chart-wrapper">
+                <canvas id="main-chart"></canvas>
             </div>
         </div>
 
